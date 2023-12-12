@@ -103,7 +103,8 @@ MusicPlayerActivity extends AppCompatActivity {
         outimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyMediaPlayer.getInstance().reset();
+//                MyMediaPlayer.getInstance().reset();
+                mediaPlayer.pause();
                 finish();
             }
         });
