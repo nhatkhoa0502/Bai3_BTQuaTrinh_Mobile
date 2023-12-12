@@ -20,9 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     Context context;
+
+    boolean temp = true;
     File[] filesAndFolders;
     public MyAdapter(Context context, File[] filesAndFolders){
         this.context = context;
@@ -74,7 +77,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 //                    Toast.makeText(context.getApplicationContext(), "mp3!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context,MusicPlayerActivity.class);
                     MyMediaPlayer.getInstance().reset();
-                    MyMediaPlayer.currentIndex = position;
+//                    MyMediaPlayer.currentIndex = position;
+                    for (int i =0 ; i< fd.size(); i++) {
+
+                        if (Objects.equals(fd.get(i).getTitle(), selectionFile.getName())) {
+                            if (temp)
+                                MyMediaPlayer.currentIndex = i;
+                            else
+                                MyMediaPlayer.currentIndex = --i;
+                            break;
+                        }
+                    }
+                    temp = false;
                     intent.putExtra("LIST",fd);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

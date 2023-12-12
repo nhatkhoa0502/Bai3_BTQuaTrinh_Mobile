@@ -95,9 +95,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         File root =  new File(path);
         File[] filesAndFolders = root.listFiles();
 
