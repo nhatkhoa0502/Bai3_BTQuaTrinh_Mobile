@@ -115,6 +115,13 @@ public class MainActivity extends AppCompatActivity {
                     MyMediaPlayer.currentIndex = 0;
                     startPlayMusic();
                 }
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        // Xử lý khi bài hát kết thúc
+                        playNextSong();
+                    }
+                });
             }
         });
 
@@ -127,13 +134,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), filesAndFolders));
 
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                // Xử lý khi bài hát kết thúc
-                playNextSong();
-            }
-        });
+
 
 
     }
