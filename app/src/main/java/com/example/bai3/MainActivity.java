@@ -129,6 +129,16 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), filesAndFolders));
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // Xử lý khi bài hát kết thúc
+                playNextSong();
+            }
+        });
+
+
     }
     private void startPlayMusic(){
         currentTimeTv = findViewById(R.id.current_time);
@@ -178,13 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                // Xử lý khi bài hát kết thúc
-                playNextSong();
-            }
-        });
+
     }
 
 

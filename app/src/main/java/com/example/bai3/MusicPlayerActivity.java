@@ -108,6 +108,13 @@ MusicPlayerActivity extends AppCompatActivity {
             }
         });
 
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // Xử lý khi bài hát kết thúc
+                playNextSong();
+            }
+        });
     }
 
     void setResourcesWithMusic(){
